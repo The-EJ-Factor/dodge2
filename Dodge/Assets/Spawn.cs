@@ -8,17 +8,19 @@ public class Spawn : MonoBehaviour
     public GameObject Lazar;
     public DateTime lastspawn;
     public System.Random Generator;
+    public float spawnrate;
     // Start is called before the first frame update
     void Start()
     {
         lastspawn = DateTime.Now;
         Generator = new System.Random();
+        spawnrate = 5;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if ((DateTime.Now - lastspawn).TotalSeconds > 10)
+        if ((DateTime.Now - lastspawn).TotalSeconds > spawnrate)
         {
             lastspawn = DateTime.Now;
             float RandomX = Generator.Next(-10, 10);
