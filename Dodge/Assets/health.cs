@@ -20,4 +20,14 @@ public class health : MonoBehaviour
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if((DateTime.Now - lastdamage).TotalSeconds>3)
+        {
+            Health -= 1;
+            lastdamage = DateTime.Now;
+            Debug.Log(Health);
+        }
+    }
 }

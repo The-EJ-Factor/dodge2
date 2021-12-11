@@ -18,6 +18,7 @@ public class movement : MonoBehaviour
         PhysicsMaterial2D NewMaterial = new PhysicsMaterial2D();
         NewMaterial.bounciness = 0f;
         NewMaterial.friction = 0f;
+        mv = 1;
         MyCollider.sharedMaterial = NewMaterial;
         screenwidth = Camera.main.orthographicSize*Screen.width/Screen.height;
         screenheight = Camera.main.orthographicSize;
@@ -30,8 +31,17 @@ public class movement : MonoBehaviour
         
         prevx = transform.position.x;
         prevy = transform.position.y;
-        var x = (Input.GetAxis("Horizontal")*mv);
-        var y = (Input.GetAxis("Vertical")*mv);
+        var adjusted = Math.Min(8, mv);
+        var x = (Input.GetAxis("Horizontal")*adjusted);
+        var y = (Input.GetAxis("Vertical")*adjusted);
+        if (x != 0 || y != 0)
+        {
+            mv += .2f;
+        }
+        else if (mv > 1)
+        {
+            mv -= .2f;
+        }
         transform.position += new Vector3((float)x * .05f, (float)y * .05f, 0);
         rv += (Math.Abs(x) + Math.Abs(y)) * -2f;
         transform.rotation = Quaternion.Euler(0, 0, rv+transform.rotation.z);
