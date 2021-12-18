@@ -2,6 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+public enum Yaxis
+{
+    down=-1,
+    up=1,
+    none=0
+}
+public enum Xaxis
+{
+    left = -1,
+    right = 1,
+    none = 0
+}
 
 public class movement : MonoBehaviour
 {
@@ -12,6 +24,8 @@ public class movement : MonoBehaviour
     public float rv;
     public float screenwidth;
     public float screenheight;
+    public Yaxis CurrentDIY = Yaxis.none;
+    public Xaxis CurrentDIX = Xaxis.none;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,14 +46,26 @@ public class movement : MonoBehaviour
         prevx = transform.position.x;
         prevy = transform.position.y;
         var adjusted = Math.Min(8, mv);
-        var x = (Input.GetAxis("Horizontal")*adjusted);
-        var y = (Input.GetAxis("Vertical")*adjusted);
+        var keyx = Input.GetAxis("Horizontal")==0? 0f:Math.Max(0.3f, Math.Abs(Input.GetAxis("Horizontal")));
+        if (Input.GetAxis("Horizontal") < 0f)
+            keyx *= -1;
+        var keyy = Input.GetAxis("Vertical") ==0? 0f:Math.Max(0.3f, Math.Abs(Input.GetAxis("Vertical")));
+        if (Input.GetAxis("Vertical") < 0f)
+            keyy *= -1;
+        float x = (float)((keyx)*adjusted);
+        float y = (float)((keyy)*adjusted);
         if (x != 0 || y != 0)
         {
-            mv += .2f;
+            mv += .05f;
+            if (mv > 8f)
+                mv = 8f;
+            CurrentDIY = (y < 0) ? Yaxis.down : (y > 0 ? Yaxis.up : Yaxis.none);
+            CurrentDIX = (x < 0) ? Xaxis.left : (x > 0 ? Xaxis.right : Xaxis.none);
         }
         else if (mv > 1)
         {
+            x += Math.Min(8, mv) * (int)CurrentDIX*0.3f;
+            y += Math.Min(8, mv) * (int)CurrentDIY*0.3f;
             mv -= .2f;
         }
         transform.position += new Vector3((float)x * .05f, (float)y * .05f, 0);
