@@ -186,12 +186,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MyCollider: {fileID: 1789527197}
+  MyBody: {fileID: 1789527205}
   prevx: 0
   prevy: 0
   mv: 7
   rv: 0
   screenwidth: 0
   screenheight: 0
+  CurrentDIY: 0
+  CurrentDIX: 0
 --- !u!212 &1789527199
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -374,6 +377,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Lazar: {fileID: 3906303008005086250, guid: 7983debcbe4e04e4d8528fcca4236dae, type: 3}
+  Radiator: {fileID: 1551794809061478888, guid: b34916d6d26ee5449a0ad7915d9425b7, type: 3}
+  Spingun: {fileID: 5391055165337076878, guid: 113036b1e71a6604fbc99998395be522, type: 3}
   spawnrate: 0
 --- !u!114 &1789527204
 MonoBehaviour:
@@ -396,14 +401,14 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789527196}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 0.1
+  m_LinearDrag: 1.5
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1

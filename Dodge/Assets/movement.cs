@@ -18,6 +18,7 @@ public enum Xaxis
 public class movement : MonoBehaviour
 {
     public BoxCollider2D MyCollider;
+    public Rigidbody2D MyBody;
     public float prevx;
     public float prevy;
     public float mv;
@@ -41,8 +42,16 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        
+        float xval = Input.GetAxis("Horizontal");
+        float yval = Input.GetAxis("Vertical");
+        if (Math.Abs(MyBody.velocity.x) < 40) {
+        MyBody.AddForce(new Vector2(xval * 5f, 0));
+        }
+        if (Math.Abs(MyBody.velocity.y) < 40)
+        {
+            MyBody.AddForce(new Vector2(0, yval * 5f));
+        }
+        /*
         prevx = transform.position.x;
         prevy = transform.position.y;
         var adjusted = Math.Min(8, mv);
@@ -71,11 +80,13 @@ public class movement : MonoBehaviour
         transform.position += new Vector3((float)x * .05f, (float)y * .05f, 0);
         rv += (Math.Abs(x) + Math.Abs(y)) * -2f;
         transform.rotation = Quaternion.Euler(0, 0, rv+transform.rotation.z);
-        //rv -= .2f;
+        //rv -= .2f; */
 
 
     }
-    void LateUpdate() {
+    void LateUpdate()
+    {
+        
         var Colliders = new List<Collider2D>();
         var filter = new ContactFilter2D();
         var overlapping = MyCollider.OverlapCollider(filter, Colliders);
