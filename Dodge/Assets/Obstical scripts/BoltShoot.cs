@@ -6,6 +6,7 @@ using System;
 public class BoltShoot : MonoBehaviour
 {
     public DateTime start;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,7 @@ public class BoltShoot : MonoBehaviour
     {
         if (transform.parent==null)
         {
-            if ((DateTime.Now - start).TotalSeconds > 2)
+            if ((DateTime.Now - start).TotalSeconds > 5/(speed/5))
             {
                 Destroy(gameObject);
             }
@@ -29,7 +30,7 @@ public class BoltShoot : MonoBehaviour
             {
                 var X = (float)Math.Cos((transform.eulerAngles.z*(Math.PI/180)));
                 var Y = (float)Math.Sin((transform.eulerAngles.z*(Math.PI/180)));
-                transform.position += new Vector3(X * 0.5f, Y * 0.5f, 0f);
+                transform.position += new Vector3(X * 0.05f*speed, Y * 0.05f*speed, 0f);
             }
         }
         
