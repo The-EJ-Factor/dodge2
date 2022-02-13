@@ -379,6 +379,7 @@ MonoBehaviour:
   Lazar: {fileID: 3906303008005086250, guid: 7983debcbe4e04e4d8528fcca4236dae, type: 3}
   Radiator: {fileID: 1551794809061478888, guid: b34916d6d26ee5449a0ad7915d9425b7, type: 3}
   Spingun: {fileID: 5391055165337076878, guid: 113036b1e71a6604fbc99998395be522, type: 3}
+  PausePlayBlock: {fileID: 90425294334574251, guid: c132ae95c73c23b4bb66a253c5291fa2, type: 3}
   spawnrate: 0
 --- !u!114 &1789527204
 MonoBehaviour:

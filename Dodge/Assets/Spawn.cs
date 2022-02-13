@@ -8,9 +8,11 @@ public class Spawn : MonoBehaviour
     public GameObject Lazar;
     public GameObject Radiator;
     public GameObject Spingun;
+    public GameObject PausePlayBlock;
     public DateTime lastspawnL;
     public DateTime lastspawnR;
     public DateTime lastspawnS;
+    public DateTime lastspawnPP;
     public System.Random Generator;
     public float spawnrate;
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class Spawn : MonoBehaviour
         lastspawnL = DateTime.Now;
         lastspawnR = DateTime.Now;
         lastspawnS = DateTime.Now;
+        lastspawnPP = DateTime.Now;
         Generator = new System.Random();
         spawnrate = 5;
     }
@@ -49,6 +52,14 @@ public class Spawn : MonoBehaviour
             float RandomY = Generator.Next(-10, 10);
             float RandomR = Generator.Next(0, 360);
             Instantiate(Spingun, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
+        }
+        if ((DateTime.Now - lastspawnPP).TotalSeconds > spawnrate)
+        {
+            lastspawnPP = DateTime.Now;
+            float RandomX = Generator.Next(-10, 10);
+            float RandomY = Generator.Next(-10, 10);
+            float RandomR = Generator.Next(90,  90);
+            Instantiate(PausePlayBlock, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
         }
     }
 }
