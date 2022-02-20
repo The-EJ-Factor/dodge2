@@ -56,10 +56,32 @@ public class Spawn : MonoBehaviour
         if ((DateTime.Now - lastspawnPP).TotalSeconds > spawnrate)
         {
             lastspawnPP = DateTime.Now;
-            float RandomX = Generator.Next(-10, 10);
-            float RandomY = Generator.Next(-10, 10);
-            float RandomR = Generator.Next(90,  90);
-            Instantiate(PausePlayBlock, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
+            for (int i = Generator.Next(4, 8); i > 0; i -= 1) {
+                float RandomX = 0;
+                float RandomY = 0;
+                int RandomR = Generator.Next(0, 4) * 90;
+                switch (RandomR)
+                {
+                    case 0:
+                        RandomX = -32;
+                        RandomY = Generator.Next(-15, 15);
+                        break;
+                    case 90:
+                        RandomY = -18;
+                        RandomX = Generator.Next(-30, 30);
+                        break;
+                    case 180:
+                        RandomX = 32;
+                        RandomY = Generator.Next(-15, 15);
+                        break;
+                    case 270:
+                        RandomY = 18;
+                        RandomX = Generator.Next(-30, 30);
+                        break;
+
+                } 
+                Instantiate(PausePlayBlock, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
+            }
         }
     }
 }

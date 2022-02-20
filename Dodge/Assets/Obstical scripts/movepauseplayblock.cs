@@ -5,6 +5,7 @@ using System;
 
 public class movepauseplayblock : MonoBehaviour
 {
+    public float Distance;
     public Rigidbody2D Player;
     // Start is called before the first frame update
     void Start()
@@ -18,9 +19,14 @@ public class movepauseplayblock : MonoBehaviour
     {
         if (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y) > 3)
         {
-            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/500;
+            Distance += (transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/800).magnitude;
+            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/800;
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
+            if(Distance > 64)
+            {
+                Destroy(gameObject);
+            }
         }
         else
         {
