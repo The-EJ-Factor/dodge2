@@ -19,8 +19,8 @@ public class movepauseplayblock : MonoBehaviour
     {
         if (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y) > 3)
         {
-            Distance += (transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/800).magnitude;
-            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/800;
+            Distance += (transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/500).magnitude;
+            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/500;
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
             if(Distance > 64)

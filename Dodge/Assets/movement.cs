@@ -32,10 +32,10 @@ public class movement : MonoBehaviour
     {
         PhysicsMaterial2D NewMaterial = new PhysicsMaterial2D();
         NewMaterial.bounciness = 0f;
-        NewMaterial.friction = 0f;
+        NewMaterial.friction = 10f;
         mv = 1;
         MyCollider.sharedMaterial = NewMaterial;
-        screenwidth = Camera.main.orthographicSize*Screen.width/Screen.height;
+        screenwidth = Camera.main.orthographicSize * Screen.width / Screen.height;
         screenheight = Camera.main.orthographicSize;
     }
 
@@ -44,8 +44,9 @@ public class movement : MonoBehaviour
     {
         float xval = Input.GetAxis("Horizontal");
         float yval = Input.GetAxis("Vertical");
-        if (Math.Abs(MyBody.velocity.x) < 40) {
-        MyBody.AddForce(new Vector2(xval * 5f, 0));
+        if (Math.Abs(MyBody.velocity.x) < 40)
+        {
+            MyBody.AddForce(new Vector2(xval * 5f, 0));
         }
         if (Math.Abs(MyBody.velocity.y) < 40)
         {
@@ -86,7 +87,7 @@ public class movement : MonoBehaviour
     }
     void LateUpdate()
     {
-        
+
         var Colliders = new List<Collider2D>();
         var filter = new ContactFilter2D();
         var overlapping = MyCollider.OverlapCollider(filter, Colliders);
@@ -95,21 +96,25 @@ public class movement : MonoBehaviour
             var vector = MyCollider.Distance(c);
             transform.position += new Vector3(vector.normal.x * vector.distance * .15f, vector.normal.y * vector.distance * .15f, 0);
         }
-        if(transform.position.x > (screenwidth+2))
+        if (transform.position.x > (screenwidth + 2))
         {
-            transform.position = new Vector3((screenwidth / -1)-2, transform.position.y, transform.position.z);
+            transform.position = new Vector3((screenwidth / -1) - 2, transform.position.y, transform.position.z);
         }
         if (transform.position.y > (screenheight + 2))
         {
-            transform.position = new Vector3( transform.position.x, (screenheight / -1) - 2, transform.position.z);
+            transform.position = new Vector3(transform.position.x, (screenheight / -1) - 2, transform.position.z);
         }
-        if (transform.position.x < (screenwidth / -1-2))
+        if (transform.position.x < (screenwidth / -1 - 2))
         {
             transform.position = new Vector3((screenwidth) + 2, transform.position.y, transform.position.z);
         }
-        if (transform.position.y < (screenheight / -1-2))
+        if (transform.position.y < (screenheight / -1 - 2))
         {
             transform.position = new Vector3(transform.position.x, (screenheight) + 2, transform.position.z);
         }
+    }
+    void OnCollisionEnter2D(Collision2D C)
+    {
+        MyBody.velocity = new Vector2(-MyBody.velocity.x, -MyBody.velocity.y);
     }
 }
