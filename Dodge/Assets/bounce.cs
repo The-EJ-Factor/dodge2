@@ -19,6 +19,13 @@ public class bounce : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        var C = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
+        transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.0001f);
+        var C2 = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color;
+        transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = new Color(C2.r, C2.g, C2.b, C2.a - 0.0001f);
+        if (C.a < 0.0000001f)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -440,6 +440,7 @@ MonoBehaviour:
   screenheight: 0
   CurrentDIY: 0
   CurrentDIX: 0
+  Bouncieness: 2
 --- !u!212 &1789527199
 SpriteRenderer:
   m_ObjectHideFlags: 0

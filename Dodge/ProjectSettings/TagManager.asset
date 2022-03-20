@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Undefined
   - DoNotDamage
+  - Bounce
   layers:
   - Default
   - TransparentFX

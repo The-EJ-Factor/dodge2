@@ -27,6 +27,7 @@ public class movement : MonoBehaviour
     public float screenheight;
     public Yaxis CurrentDIY = Yaxis.none;
     public Xaxis CurrentDIX = Xaxis.none;
+    public float Bouncieness;
     // Start is called before the first frame update
     void Start()
     {
@@ -113,8 +114,12 @@ public class movement : MonoBehaviour
             transform.position = new Vector3(transform.position.x, (screenheight) + 2, transform.position.z);
         }
     }
-    void OnCollisionEnter2D(Collision2D C)
+    void OnTriggerEnter2D(Collider2D C)
     {
-        MyBody.velocity = new Vector2(-MyBody.velocity.x, -MyBody.velocity.y);
+        if(C.tag == "Bounce"){
+        MyBody.velocity = (new Vector2(-MyBody.velocity.x, -MyBody.velocity.y))*Bouncieness;
+            Destroy(C.gameObject);
+        }
+       
     }
 }
