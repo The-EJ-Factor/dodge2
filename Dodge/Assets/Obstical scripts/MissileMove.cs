@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MissileMove : MonoBehaviour
 {
     public GameObject player;
+    public float volocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,8 +17,20 @@ public class MissileMove : MonoBehaviour
     void Update()
     {
         var lookat = player.transform.position;
-        lookat.z = transform.position.z;
-        transform.LookAt(lookat,Vector3.forward);
-        transform.eulerAngles = new Vector3(0f, 0f, -transform.eulerAngles.z);
+        var diffx = lookat.x - transform.position.x;
+        var diffy = lookat.y - transform.position.y;
+        var tp = Math.Atan(diffy / diffx) * 180 / Math.PI;
+        if (lookat.x < transform.position.x) {
+            tp += 180;
+        }
+        transform.eulerAngles = new Vector3(0f, 0f, (float)tp);
+        transform.position += transform.right* 0.085f;
+    }
+    void OnTriggerEnter2D(Collider2D C) {
+        if (C.tag == "Player")
+        {
+            Destroy(gameObject);
+        }
+    
     }
 }
