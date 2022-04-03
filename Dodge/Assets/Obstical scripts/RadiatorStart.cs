@@ -34,23 +34,23 @@ public class RadiatorStart : MonoBehaviour
         }
         if ((DateTime.Now - lastspawn).TotalSeconds > 2 && existing[1])
         {
-            transform.GetChild(1).localScale += new Vector3(RadInc, RadInc, 0);
-            var C = transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color;
-            transform.GetChild(1).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.01f);
+            transform.GetChild(0).localScale += new Vector3(RadInc, RadInc, 0);
+            var C = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.01f);
             if (C.a <= 0f)
             {
-                Destroy(transform.GetChild(1).gameObject);
+                Destroy(transform.GetChild(0).gameObject);
                 existing[1] = false;
             }
         }
         if ((DateTime.Now - lastspawn).TotalSeconds > 2.5 && existing[2])
         {
-            transform.GetChild(2).localScale += new Vector3(RadInc, RadInc, 0);
-            var C = transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color;
-            transform.GetChild(2).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.01f);
+            transform.GetChild(0).localScale += new Vector3(RadInc, RadInc, 0);
+            var C = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
+            transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.01f);
             if (C.a <= 0f)
             {
-                Destroy(transform.GetChild(2).gameObject);
+                Destroy(transform.GetChild(0).gameObject);
                 existing[2] = false;
             }
         }
