@@ -22,9 +22,17 @@ public class health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float x = UnityEngine.Random.Range(-0.01f,0.01f);
-        float y = UnityEngine.Random.Range(-0.01f,0.01f);
+        if (ShakeDuration > 0)
+        {
+        float x = UnityEngine.Random.Range(-0.5f,0.5f);
+        float y = UnityEngine.Random.Range(-0.5f,0.5f);
         main.transform.position += new Vector3(x, y, 0f);
+            ShakeDuration -= Time.deltaTime;
+        }
+        else
+        {
+            main.transform.position = new Vector3(0f, 0f, -10f);
+        }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -34,7 +42,7 @@ public class health : MonoBehaviour
             Health -= 1;
             lastdamage = DateTime.Now;
             Label.text = (Health.ToString());
-            ShakeDuration = 1.0f;
+            ShakeDuration = 0.3f;
 
             
         }
