@@ -23,6 +23,9 @@ public class RadiatorStart : MonoBehaviour
         }
         if ((DateTime.Now - lastspawn).TotalSeconds > 1.5 && existing[0])
         {
+            transform.GetChild(0).gameObject.tag = "Damage";
+            transform.GetChild(1).gameObject.tag = "Damage";
+            transform.GetChild(2).gameObject.tag = "Damage";
             transform.GetChild(0).localScale += new Vector3(RadInc, RadInc, 0);
             var C = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color;
             transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>().color = new Color(C.r, C.g, C.b, C.a - 0.01f);

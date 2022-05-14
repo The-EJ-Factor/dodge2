@@ -53,6 +53,10 @@ public class movement : MonoBehaviour
         {
             MyBody.AddForce(new Vector2(0, yval * 5f));
         }
+        if (Input.touchCount > 0)
+        {
+            var touch = Input.GetTouch(0);
+        }
         /*
         prevx = transform.position.x;
         prevy = transform.position.y;

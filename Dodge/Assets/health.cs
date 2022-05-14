@@ -37,7 +37,7 @@ public class health : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if((DateTime.Now - lastdamage).TotalSeconds>3)
+        if((DateTime.Now - lastdamage).TotalSeconds>3 && collision.gameObject.tag=="Damage")
         {
             Health -= 1;
             lastdamage = DateTime.Now;
