@@ -43,8 +43,8 @@ public class movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float xval = Input.GetAxis("Horizontal");
-        float yval = Input.GetAxis("Vertical");
+        float xval = Input.GetAxisRaw("Horizontal");
+        float yval = Input.GetAxisRaw("Vertical");
         if (Math.Abs(MyBody.velocity.x) < 40)
         {
             MyBody.AddForce(new Vector2(xval * 5f, 0));
@@ -56,6 +56,9 @@ public class movement : MonoBehaviour
         if (Input.touchCount > 0)
         {
             var touch = Input.GetTouch(0);
+            var touchpos = touch.position;
+            MyBody.AddForce(new Vector2((touchpos.x - transform.position.x) / (Vector2.Distance(touchpos, transform.position)), (touchpos.y - transform.position.y) / (Vector2.Distance(touchpos, transform.position))));
+            
         }
         /*
         prevx = transform.position.x;
