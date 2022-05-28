@@ -57,7 +57,7 @@ public class movement : MonoBehaviour
         {
             var touch = Input.GetTouch(0);
             var touchpos = touch.position;
-            MyBody.AddForce(new Vector2((touchpos.x - transform.position.x) / (Vector2.Distance(touchpos, transform.position)), (touchpos.y - transform.position.y) / (Vector2.Distance(touchpos, transform.position))));
+            MyBody.AddForce(new Vector2((touchpos.x - transform.position.x) / Mathf.Abs(Vector2.Distance(touchpos, transform.position)), (touchpos.y - transform.position.y) / Mathf.Abs(Vector2.Distance(touchpos, transform.position))));
             
         }
         /*
