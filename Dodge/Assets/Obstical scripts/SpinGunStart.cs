@@ -25,9 +25,9 @@ public class SpinGunStart : MonoBehaviour
 }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        transform.eulerAngles += new Vector3(0,0,DI*.3f);
+        transform.eulerAngles += new Vector3(0,0,DI*1.2f);
         if ((DateTime.Now - lastchange).TotalMilliseconds > CONT)
         {
             DI = UnityEngine.Random.Range(-1.5f, 1.5f);

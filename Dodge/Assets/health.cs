@@ -20,7 +20,7 @@ public class health : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (ShakeDuration > 0)
         {

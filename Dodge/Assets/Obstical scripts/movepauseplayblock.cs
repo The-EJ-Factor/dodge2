@@ -15,12 +15,12 @@ public class movepauseplayblock : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y) > 3)
         {
-            Distance += (transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/500).magnitude;
-            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/500;
+            Distance += (transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/125).magnitude;
+            transform.position += transform.right * (Math.Abs(Player.velocity.x) + Math.Abs(Player.velocity.y))/125;
             transform.GetChild(1).gameObject.SetActive(false);
             transform.GetChild(2).gameObject.SetActive(true);
             if(Distance > 64)

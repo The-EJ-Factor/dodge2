@@ -30,7 +30,7 @@ public class Spawn : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if ((DateTime.Now - lastspawn).TotalSeconds > spawnrate)
         {

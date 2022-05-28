@@ -17,7 +17,7 @@ public class MissileMove : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (phase == 0)
         {
@@ -29,7 +29,7 @@ public class MissileMove : MonoBehaviour
                 tp += 180;
             }
             transform.eulerAngles = new Vector3(0f, 0f, (float)tp);
-            transform.position += transform.right* 0.085f;
+            transform.position += transform.right* 0.28f;
             if ((DateTime.Now - animatime).TotalSeconds > 4)
             {
                 phase = 1;
@@ -38,7 +38,7 @@ public class MissileMove : MonoBehaviour
         }
         else if(phase == 1)
         {
-            transform.position -= transform.right * 0.06f;
+            transform.position -= transform.right * 0.24f;
             if ((DateTime.Now - animatime).TotalSeconds > 0.3f)
             {
                 phase = 2;
@@ -47,7 +47,7 @@ public class MissileMove : MonoBehaviour
         }
         else if(phase == 2)
         {
-            transform.position += transform.right * 0.4f;
+            transform.position += transform.right * 1.6f;
             if ((DateTime.Now - animatime).TotalSeconds > 5)
             {
                 Destroy(gameObject);

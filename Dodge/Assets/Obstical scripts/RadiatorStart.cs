@@ -15,7 +15,7 @@ public class RadiatorStart : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if ((DateTime.Now - lastspawn).TotalSeconds > 5)
         {

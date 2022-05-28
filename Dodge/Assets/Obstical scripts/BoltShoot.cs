@@ -18,7 +18,7 @@ public class BoltShoot : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (transform.parent==null)
         {
@@ -30,7 +30,7 @@ public class BoltShoot : MonoBehaviour
             {
                 var X = (float)Math.Cos((transform.eulerAngles.z*(Math.PI/180)));
                 var Y = (float)Math.Sin((transform.eulerAngles.z*(Math.PI/180)));
-                transform.position += new Vector3(X * 0.05f*speed, Y * 0.05f*speed, 0f);
+                transform.position += new Vector3(X * 0.20f*speed, Y * 0.20f*speed, 0f);
             }
         }
         

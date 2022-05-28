@@ -23,7 +23,7 @@ public class LazarShoot : MonoBehaviour
     }
     public int spawntick;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if ((DateTime.Now - lastspawn).TotalSeconds < 2 && (DateTime.Now - waitshoot).TotalSeconds > 1)
         {
