@@ -28,6 +28,8 @@ public class movement : MonoBehaviour
     public Yaxis CurrentDIY = Yaxis.none;
     public Xaxis CurrentDIX = Xaxis.none;
     public float Bouncieness;
+    public static Vector3 bottomleft;
+    public static Vector3 topright;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,8 @@ public class movement : MonoBehaviour
         MyCollider.sharedMaterial = NewMaterial;
         screenwidth = Camera.main.orthographicSize * Screen.width / Screen.height;
         screenheight = Camera.main.orthographicSize;
+        bottomleft = new Vector3(-screenwidth, -screenheight, 0f);
+        topright = new Vector3(screenwidth, screenheight, 0f);
     }
 
     // Update is called once per frame
@@ -57,7 +61,10 @@ public class movement : MonoBehaviour
         {
             var touch = Input.GetTouch(0);
             var touchpos = touch.position;
-            MyBody.AddForce(new Vector2((touchpos.x - transform.position.x) / Mathf.Abs(Vector2.Distance(touchpos, transform.position)), (touchpos.y - transform.position.y) / Mathf.Abs(Vector2.Distance(touchpos, transform.position))));
+            var x = touchpos.x * (1 / Screen.width) * (topright.x - bottomleft.x)-((topright.x - bottomleft.x)/2);
+            var y = touchpos.y * (1 / Screen.height) * (topright.y - bottomleft.y)-((topright.y - bottomleft.y)/2);
+            var d = new Vector2(x, y);
+            MyBody.AddForce(new Vector2((x - transform.position.x) / Mathf.Abs(Vector2.Distance(d, transform.position)), (y - transform.position.y) / Mathf.Abs(Vector2.Distance(d, transform.position))));
             
         }
         /*
