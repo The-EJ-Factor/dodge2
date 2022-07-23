@@ -10,7 +10,7 @@ public class bounce : MonoBehaviour
     void Start()
     {
         PhysicsMaterial2D NewMaterial = new PhysicsMaterial2D();
-        NewMaterial.bounciness = 1.0001f;
+        NewMaterial.bounciness = 32.0001f;
         NewMaterial.friction = 0f;
         MyCollider.sharedMaterial = NewMaterial;
 
