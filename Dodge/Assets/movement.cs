@@ -33,6 +33,7 @@ public class movement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("Initializing Mvoement Script!");
         PhysicsMaterial2D NewMaterial = new PhysicsMaterial2D();
         NewMaterial.bounciness = 0f;
         NewMaterial.friction = 10f;
@@ -49,6 +50,7 @@ public class movement : MonoBehaviour
     {
         float xval = Input.GetAxisRaw("Horizontal");
         float yval = Input.GetAxisRaw("Vertical");
+        Debug.Log("XV: " + xval.ToString());
         if (Math.Abs(MyBody.velocity.x) < 40)
         {
             MyBody.AddForce(new Vector2(xval * 5f, 0));
@@ -112,30 +114,37 @@ public class movement : MonoBehaviour
     void LateUpdate()
     {
 
-        var Colliders = new List<Collider2D>();
-        var filter = new ContactFilter2D();
-        var overlapping = MyCollider.OverlapCollider(filter, Colliders);
-        foreach (var c in Colliders)
+        try
         {
-            var vector = MyCollider.Distance(c);
-            transform.position += new Vector3(vector.normal.x * vector.distance * .15f, vector.normal.y * vector.distance * .15f, 0);
-        }
-        if (transform.position.x > (screenwidth + 2))
+            var Colliders = new List<Collider2D>();
+            var filter = new ContactFilter2D();
+            var overlapping = MyCollider.OverlapCollider(filter, Colliders);
+            foreach (var c in Colliders)
+            {
+                var vector = MyCollider.Distance(c);
+                transform.position += new Vector3(vector.normal.x * vector.distance * .15f, vector.normal.y * vector.distance * .15f, 0);
+            }
+            if (transform.position.x > (screenwidth + 2))
+            {
+                transform.position = new Vector3((screenwidth / -1) - 2, transform.position.y, transform.position.z);
+            }
+            if (transform.position.y > (screenheight + 2))
+            {
+                transform.position = new Vector3(transform.position.x, (screenheight / -1) - 2, transform.position.z);
+            }
+            if (transform.position.x < (screenwidth / -1 - 2))
+            {
+                transform.position = new Vector3((screenwidth) + 2, transform.position.y, transform.position.z);
+            }
+            if (transform.position.y < (screenheight / -1 - 2))
+            {
+                transform.position = new Vector3(transform.position.x, (screenheight) + 2, transform.position.z);
+            }
+        }catch(Exception e)
         {
-            transform.position = new Vector3((screenwidth / -1) - 2, transform.position.y, transform.position.z);
+
         }
-        if (transform.position.y > (screenheight + 2))
-        {
-            transform.position = new Vector3(transform.position.x, (screenheight / -1) - 2, transform.position.z);
-        }
-        if (transform.position.x < (screenwidth / -1 - 2))
-        {
-            transform.position = new Vector3((screenwidth) + 2, transform.position.y, transform.position.z);
-        }
-        if (transform.position.y < (screenheight / -1 - 2))
-        {
-            transform.position = new Vector3(transform.position.x, (screenheight) + 2, transform.position.z);
-        }
+        
     }
     void OnTriggerEnter2D(Collider2D C)
     {

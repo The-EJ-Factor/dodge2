@@ -7,6 +7,7 @@ public class pausemenue : MonoBehaviour
     public GameObject pausem;
     public GameObject pausebutton;
     public GameObject playbutton;
+    public GameObject backbutton;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +24,7 @@ public class pausemenue : MonoBehaviour
         Time.timeScale = 0f;
         pausebutton.SetActive(false);
         playbutton.SetActive(true);
+        backbutton.SetActive(true);
     }
     public void enableplay()
     {
@@ -30,5 +32,6 @@ public class pausemenue : MonoBehaviour
         Time.timeScale = 1f;
         pausebutton.SetActive(true);
         playbutton.SetActive(false);
+        backbutton.SetActive(false);
     }
 }

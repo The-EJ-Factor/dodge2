@@ -18,6 +18,7 @@ public class Back : MonoBehaviour
     }
     public void Return()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("Title");
     }
 }

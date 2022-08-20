@@ -14,6 +14,7 @@ public class Start : MonoBehaviour
     }
     public void SwitchScene()
     {
+        Time.timeScale = 1f;
         SceneManager.LoadScene("The dodge room");
     }
 }
