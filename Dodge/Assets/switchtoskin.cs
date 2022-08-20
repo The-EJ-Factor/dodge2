@@ -9,6 +9,15 @@ public class switchtoskin : MonoBehaviour
     void Start()
     {
         s = gameObject.GetComponent<SpriteRenderer>();
+    int current = skinswitcher.currentskin;
+    if (current == 0){
+        GameObject.Find("default").SetActive (true);
+        GameObject.Find("happy").SetActive (false);
+    }
+    else if (current == 1){
+        GameObject.Find("default").SetActive (false);
+        GameObject.Find("happy").SetActive (true);
+    }
     }
 
     // Update is called once per frame

@@ -50,7 +50,6 @@ public class movement : MonoBehaviour
     {
         float xval = Input.GetAxisRaw("Horizontal");
         float yval = Input.GetAxisRaw("Vertical");
-        Debug.Log("XV: " + xval.ToString());
         if (Math.Abs(MyBody.velocity.x) < 40)
         {
             MyBody.AddForce(new Vector2(xval * 5f, 0));
@@ -69,10 +68,13 @@ public class movement : MonoBehaviour
         {
             var touch = Input.GetTouch(0);
             var touchpos = touch.position;
-            var x = touchpos.x * (1 / Screen.width) * (topright.x - bottomleft.x) - ((topright.x - bottomleft.x) / 2);
-            var y = touchpos.y * (1 / Screen.height) * (topright.y - bottomleft.y) - ((topright.y - bottomleft.y) / 2);
+            Debug.Log("touchp: "+ touchpos.x.ToString()+","+ touchpos.y.ToString());
+            var ray = Camera.main.ScreenPointToRay(touchpos);
+            var x = ray.origin.x;
+            var y = ray.origin.y;
+            Debug.Log("touch: "+x.ToString()+","+y.ToString());
             var d = new Vector2(x, y);
-            MyBody.AddForce(new Vector2((x - transform.position.x) / Mathf.Abs(Vector2.Distance(d, transform.position)), (y - transform.position.y) / Mathf.Abs(Vector2.Distance(d, transform.position))));
+            MyBody.AddForce(new Vector2((x - transform.position.x) / Mathf.Abs(Vector2.Distance(d, transform.position))*5f, (y - transform.position.y) / Mathf.Abs(Vector2.Distance(d, transform.position))*5f));
 
         }
         /*
