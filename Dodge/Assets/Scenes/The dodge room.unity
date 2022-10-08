@@ -11155,6 +11155,7 @@ MonoBehaviour:
   PausePlayBlock: {fileID: 90425294334574251, guid: c132ae95c73c23b4bb66a253c5291fa2, type: 3}
   Missile: {fileID: 7454145990965818037, guid: 19ad4651f31eb5446a7a1c5857bd45f9, type: 3}
   Bouncer: {fileID: 5316865338249762714, guid: c44009c11577bf74e9645dd572078543, type: 3}
+  Turret: {fileID: 5391055165337076878, guid: aa24b98c69bc7414ba04df1357c9c98e, type: 3}
   spawnrate: 2
 --- !u!114 &1789527204
 MonoBehaviour:

@@ -11,6 +11,7 @@ public class Spawn : MonoBehaviour
     public GameObject PausePlayBlock;
     public GameObject Missile;
     public GameObject Bouncer;
+    public GameObject Turret;
     //public DateTime lastspawnL;
     //public DateTime lastspawnR;
     //public DateTime lastspawnS;
@@ -34,7 +35,7 @@ public class Spawn : MonoBehaviour
     {
         if ((DateTime.Now - lastspawn).TotalSeconds > spawnrate)
         {
-            int obstical = Generator.Next(1,7);
+            int obstical = Generator.Next(1,8);
             if (obstical == 1)
             {
                 lastspawn = DateTime.Now;
@@ -93,9 +94,10 @@ public class Spawn : MonoBehaviour
             if (obstical == 5)
             {
                 lastspawn = DateTime.Now;
-                float RandomX = Generator.Next(-10, 10);
-                float RandomY = Generator.Next(-10, 10);
+
                 float RandomR = Generator.Next(0, 360);
+                float RandomX = Mathf.Cos(RandomR/180*Mathf.PI)*20;
+                float RandomY = Mathf.Sin(RandomR/180*Mathf.PI)*20;
                 Instantiate(Missile, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
             }
             if (obstical == 6)
@@ -105,6 +107,14 @@ public class Spawn : MonoBehaviour
                 float RandomY = Generator.Next(-10, 10);
                 float RandomR = Generator.Next(0, 360);
                 Instantiate(Bouncer, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
+            }
+            if (obstical == 7)
+            {
+                lastspawn = DateTime.Now;
+                float RandomX = Generator.Next(-10, 10);
+                float RandomY = Generator.Next(-10, 10);
+                float RandomR = Generator.Next(0, 360);
+                Instantiate(Turret, new Vector3(RandomX, RandomY, 0f), Quaternion.Euler(0f, 0f, RandomR));
             }
         }
 

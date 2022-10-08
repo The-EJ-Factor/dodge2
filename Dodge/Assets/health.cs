@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
+
 
 public class health : MonoBehaviour
 {
@@ -15,8 +17,8 @@ public class health : MonoBehaviour
     void Start()
     {
         lastdamage = DateTime.Now;
-
-        
+        Health=DifficultyManeger.current.health;
+        Label.text = (Health.ToString());
     }
 
     // Update is called once per frame
@@ -43,6 +45,9 @@ public class health : MonoBehaviour
             lastdamage = DateTime.Now;
             Label.text = (Health.ToString());
             ShakeDuration = 0.3f;
+            if (Health<=0){
+                SceneManager.LoadScene("Title");
+            }
 
             
         }

@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
+
 
 public class MissileMove : MonoBehaviour
 {
@@ -9,9 +11,11 @@ public class MissileMove : MonoBehaviour
     public float volocity;
     public DateTime animatime;
     public int phase;
+    float missilespeed;
     // Start is called before the first frame update
     void Start()
     {
+        missilespeed = (DifficultyManeger.Difficulty*6 + 16)*0.01f;
         animatime = DateTime.Now;
         player = GameObject.Find("Player"); 
     }
@@ -29,7 +33,7 @@ public class MissileMove : MonoBehaviour
                 tp += 180;
             }
             transform.eulerAngles = new Vector3(0f, 0f, (float)tp);
-            transform.position += transform.right* 0.28f;
+            transform.position += transform.right* missilespeed;
             if ((DateTime.Now - animatime).TotalSeconds > 4)
             {
                 phase = 1;
