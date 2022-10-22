@@ -20,6 +20,9 @@ public class ScoreManeger : MonoBehaviour
     {
         timesurvived += Time.deltaTime;
         score = Mathf.Floor(timesurvived * ((timesurvived * 2) / 240) * 10);
+        if (score >= 1000){
+            AchivmentManager.giveachivment("starting off well");
+        }
         scorelabel.text = score.ToString();
     }
 }

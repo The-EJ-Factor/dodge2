@@ -28,7 +28,7 @@ public class AchivmentManager : MonoBehaviour
         {
             allachivments.Add(new achivment(){name="welcome",description="play the game for the first time",cash=0,skinname="happy",gotten=false});
             giveachivment("welcome");
-            allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
+            allachivments.Add(new achivment(){name="starting off well",description="Gain 1000 points in any difficulty",cash=0,gotten=false});
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
