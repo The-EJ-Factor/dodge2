@@ -19,7 +19,7 @@ public class ScoreManeger : MonoBehaviour
     void Update()
     {
         timesurvived += Time.deltaTime;
-        score = Mathf.Floor(timesurvived * ((timesurvived * 2) / 240) * 10);
+        score = Mathf.Floor(timesurvived * ((timesurvived * 2) / 24) * 10);
         if (score >= 1000){
             AchivmentManager.giveachivment("starting off well");
         }

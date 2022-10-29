@@ -46,6 +46,7 @@ public class health : MonoBehaviour
             Label.text = (Health.ToString());
             ShakeDuration = 0.3f;
             if (Health<=0){
+                AchivmentManager.giveachivment("it happens ¯\\_(ツ)_/¯");
                 SceneManager.LoadScene("Title");
             }
 
