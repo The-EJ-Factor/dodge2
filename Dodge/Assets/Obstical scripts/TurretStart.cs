@@ -40,7 +40,7 @@ public class TurretStart : MonoBehaviour
 
         if ((DateTime.Now - lastbulletspawn).TotalMilliseconds > 3000)
         {
-            Instantiate(SpingunShot, SpingunShot.transform.position, SpingunShot.transform.rotation*Quaternion.Euler(0,0,DI*10));
+            Instantiate(SpingunShot, SpingunShot.transform.position, SpingunShot.transform.rotation*Quaternion.Euler(0,0,DI*5));
             lastbulletspawn = DateTime.Now;
         }
         if ((DateTime.Now-lastspawn).TotalSeconds>5)

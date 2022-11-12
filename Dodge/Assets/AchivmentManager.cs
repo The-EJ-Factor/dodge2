@@ -53,10 +53,13 @@ public class AchivmentManager : MonoBehaviour
     public static void giveachivment(string name){
         var achivment = allachivments.Find(a=>(a.name==name));
         if(achivment!=null){
+            if(achivment.gotten==false){
             achivment.gotten=true;
             instance.showtime=4f;
             instance.title.text=achivment.name;
             instance.description.text=achivment.description;
+            MoneyManeger.tokens += (int)achivment.cash;
+            }
         }
     }
     // Update is called once per frame

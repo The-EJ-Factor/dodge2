@@ -47,6 +47,7 @@ public class health : MonoBehaviour
             ShakeDuration = 0.3f;
             if (Health<=0){
                 AchivmentManager.giveachivment("it happens ¯\\_(ツ)_/¯");
+                MoneyManeger.tokens += (int)Math.Floor(ScoreManeger.score/100);
                 SceneManager.LoadScene("Title");
             }
 
