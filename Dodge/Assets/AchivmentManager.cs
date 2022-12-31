@@ -18,6 +18,7 @@ public class AchivmentManager : MonoBehaviour
     public Text title;
     public Text description;
     public static List <achivment> allachivments=new List <achivment>();
+    public RectTransform ObjectScrollHight ;
     
 
     // Start is called before the first frame update
@@ -47,8 +48,10 @@ public class AchivmentManager : MonoBehaviour
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
             allachivments.Add(new achivment(){name="balnk",description="default",cash=0,gotten=false});
+            ObjectScrollHight.sizeDelta=new Vector2(0,allachivments.Count*130);
             
         }
+    
     }
     public static void giveachivment(string name){
         var achivment = allachivments.Find(a=>(a.name==name));
